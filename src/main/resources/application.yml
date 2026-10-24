@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: meridian-production
+  datasource:
+    url: jdbc:h2:file:./data/meridian;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: 8090
+  # Leave address unset so Tomcat binds a dual-stack wildcard socket (IPv4 + IPv6).
+  compression:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  seed:
+    enabled: true
+  cors:
+    # IPv4, hostname and IPv6 loopback origins for the Vite dev/preview servers.
+    allowed-origins: "http://localhost:5173,http://127.0.0.1:5173,http://[::1]:5173,http://localhost:4173,http://127.0.0.1:4173,http://[::1]:4173"
+
+logging:
+  level:
+    org.hibernate.SQL: warn
+    com.meridian.pms: info

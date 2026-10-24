@@ -1,0 +1,11 @@
+data/*
+!data/.gitkeep
+target/
+.run/
+frontend/node_modules/
+frontend/dist/
+*.iml
+.idea/
+.vscode/
+.DS_Store
+*.log
